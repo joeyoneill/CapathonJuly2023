@@ -3,6 +3,7 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Authorization;
 global using CAPATHON.Controllers;
 global using CAPATHON.Models;
+global using CAPATHON.Models.ViewModels;
 global using CAPATHON.Data;
 global using CAPATHON.Support;
 

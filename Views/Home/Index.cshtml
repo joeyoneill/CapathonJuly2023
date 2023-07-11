@@ -2,7 +2,54 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!doctype html>
+<html lang="en">
+  <head>
+<link href=”https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css” rel=”stylesheet” integrity=”sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU” crossorigin=”anonymous”>
+  </head>
+  <body>
+
+    
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#personalInfo">Personal Information</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#dependents" role="button" aria-expanded="false">Dependents</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#dependents1">Kirpa</a></li>
+      <li><a class="dropdown-item" href="#">Lindsey</a></li>
+      <li><a class="dropdown-item" href="#">Jose</a></li>
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#addDependent">Add New Dependent</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link">Add Emergency Contact</a>
+  </li>
+</ul>
+
+  <div class="tab-content">
+        <div class="tab-pane in active" role = "tabpanel" id="personalInfo">
+          <p>I'm in Section 1.</p>
+        </div>
+        <div role = "tabpanel" class="tab-pane" id="dependents1">
+          <p>I'm in Section 2.</p>
+        </div>
+        <div role = "tabpanel" class="tab-pane" id="addDependent">
+          <p>I'm in Section 3.</p>
+        </div>
+  </div>
+
+
+
+ 
+<iframe src="https://www.google.com/maps/embed?pb=!4v1689035180846!6m8!1m7!1sCAoSLEFGMVFpcE1qOVJxUmFNdS1QWkk5b3hNd3pkRTc5amE2RUotcFRqYTZtNHpH!2m2!1d33.35083075710251!2d-86.8467656772923!3f333.7651212870359!4f-13.785833982637499!5f0.4000000000000002" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <script src=”https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js” integrity=”sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ” crossorigin=”anonymous”></script>
+  
+  
+  </body>
+</html>
+

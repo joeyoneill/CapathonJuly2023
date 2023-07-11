@@ -1,0 +1,26 @@
+LOGS
+
+# 7.10.2023
+
+    - Added Auth0 to web application
+        - Additional Priced Package for managed Auth System
+        - NEEDED: Inform Brandon to include in pricing pitch
+            - Include benefits of the service in pitch
+    
+    - BRING UP IN INITIAL MEETING TOMORROW 7.11.2023 (Intelligence Report)
+        - Due to the fact that Austin and Thel have hyped me up to their groups. They are working at a noticably faster and more rigorous pace.
+        
+        ################
+        # THEL'S GROUP #
+        ################
+        Thel has personally been acting more stressed than usual, and his teamates have confirmed it. Their team has even abandoned plans to use MongoDB in pursuit of SQL Server, hosted on azure cloud, due to me leaking the information that our SQL Server was already hosted (My bad guys). They are working on a web application that relies on a dotnet Web API hosted on Azure, and a DaisyUI/React JS frontend. Aidan, a member of the group, confirmed the DaisyUI frontend as he is one of the frontend developers. Thel is also a frontend developer. I have not confirmed that the API is a dotnet project, but that doesn't change the fact that Aidan also confirmed that it was an API based application. Their team has also confirmed that their database layout is already designed.
+
+        ##################
+        # AUSTIN'S GROUP #
+        ##################
+        Austin has been uncannily calm so far. However, he has confirmed that his group is extremely stressed, especially Sukriti (OPTION TO CONNECT WITH HER AND CLAIM WE ARE STRESSED TO LEARN MORE ABOUT THEIR APPLICATION - Subha seems to have a close relationship with her and would be a good point of contact). Austin claimed that their BA Joseph has been shooting down their ideas to play it safe. This may affect them and cause them to create a more narrow web application. Austin also confirmed that they are creating a dotnet MVC web application like us. I walked into the E.O.D wrap up and over heard Austin and Aidan talking about my coding skills, and Aidan making a joke to me asking if we have already finished the app. While Aidan is a part of Thel's team, the fact that he was walking about it with Austin gives suspicions that Austin has probably mentioned the same things to his group, however this is unconfirmed.
+
+        ###################
+        # RECOMMENDATIONS #
+        ###################
+        Due to the fact that the other groups believe we are ahead and stronger than they are (in terms of coding and project cohesion), they are working harder to compensate for what they think they lack. I highly recommend that we start to appear weaker than we are to the other groups. If we act more stressed, and induce a sense of panic surrounding our group when talking to members of other groups, it will bring about a feeling that the other groups are fine when competeing against us. This should cause them to stop over-working to compensate, and will make the competion easier.

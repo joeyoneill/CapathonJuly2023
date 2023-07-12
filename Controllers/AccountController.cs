@@ -10,6 +10,15 @@ namespace CAPATHON.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly HHDBContext _context;
+
+        public AccountController(HHDBContext context)
+        {
+            _context = context;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+
         // ACTION: /Account/Login
         public async Task Login(string returnUrl = "/")
         {
@@ -27,8 +36,6 @@ namespace CAPATHON.Controllers
         [Authorize]
         public IActionResult Profile()
         {
-            Console.WriteLine();
-
             // attr init
             string name = string.Empty;
             string nickname = string.Empty;
@@ -84,6 +91,72 @@ namespace CAPATHON.Controllers
 
             await HttpContext.SignOutAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // Account Edit Functions
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // GET: Redirect after account creation to /Account/Edit
+        [Authorize]
+        public async Task<IActionResult> Edit() {
+            if (_context.Clients == null)
+                return NotFound();
+
+            // Get user ID
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+                return NotFound();
+
+            // get client
+            var client = await _context.Clients.FindAsync(userId);
+            if (client == null)
+                return NotFound();
+
+            return View(client);
+        }
+
+        // POST: Update Client Information
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit([Bind("Id,FirstName,LastName,Phone")] Client client) {
+            // initial null check
+            if (_context.Clients == null)
+                return NotFound();
+
+            // Get user ID
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null || userId != client.Id)
+                return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(client);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ClientExists(client.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Profile));
+            }
+            return View(client);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+
+        private bool ClientExists(string id)
+        {
+          return (_context.Clients?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -11,5 +11,6 @@ namespace CAPATHON.Models.ViewModels
         public string? Name { get; internal set; }
         public string? Email { get; internal set; }
         public Client? Client_Obj { get; internal set; }
+        public List<Dependent>? client_dependents { get; set; }
     }
 }

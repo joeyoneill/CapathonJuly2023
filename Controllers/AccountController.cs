@@ -97,11 +97,14 @@ namespace CAPATHON.Controllers
             if (client == null)
                 return NotFound();
 
+            // get client dependents
+
+
             var ViewModel = new UserProfileViewModel {
                 UserId = userId,
                 Name = nickname,
                 Email = name,
-                Client_Obj = client
+                Client_Obj = client,
             };
 
             return View(ViewModel);
@@ -188,9 +191,6 @@ namespace CAPATHON.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDependent([Bind("Id,FirstName,LastName,EmergencyContactName,EmergencyContactPhone,Birthday,AdditionalNotes,ClientId")] Dependent dependent)
         {
-            Console.WriteLine(ModelState.IsValid);
-            Console.WriteLine(dependent.Id.GetType());
-            Console.WriteLine(dependent.Birthday.GetType());
             if (ModelState.IsValid)
             {
                 _context.Add(dependent);

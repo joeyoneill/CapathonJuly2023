@@ -4,8 +4,8 @@
     ViewData["Title"] = "Choose Business";
 }
 
-<h2>Select Business</h2>
-
+<h1 class="text-center display-4 font-weight-bold">Select Business</h1>
+<!--
 @using (Html.BeginForm("SelectBusiness", "Session", FormMethod.Post))
 {
     <div class="form-group">
@@ -14,4 +14,21 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Next</button>
+}
+-->
+@using (Html.BeginForm("SelectBusiness", "Session", FormMethod.Post))
+{
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <label for="businessId" class="block text-gray-700 text-sm font-bold mb-2">Business:</label>
+  <select id="businessId" name="businessId" class="form-select w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    <option value="">Select Business</option>
+    @foreach (var business in ViewBag.Businesses as SelectList)
+    {
+      <option value="@business.Value">@business.Text</option>
+    }
+  </select>
+</div>
+    <div class="flex justify-center">
+        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline fancy-button">Next</button>
+    </div>
 }

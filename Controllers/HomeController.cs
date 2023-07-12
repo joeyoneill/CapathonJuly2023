@@ -28,6 +28,11 @@ public class HomeController : Controller
         return View();
     }
 
+     public IActionResult Calendar()
+    {
+        return View();
+    }
+
     public IActionResult Contact()
     {
         return View();

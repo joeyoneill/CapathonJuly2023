@@ -3,6 +3,9 @@
     ViewData["Title"] = "Edit Account Details";
 }
 
+
+
+<!--
 <h1>ID: @Model.Id</h1>
 <h2>First Name: @Model.FirstName</h2>
 
@@ -36,3 +39,58 @@
         </form>
     </div>
 </div>
+-->
+
+
+<!--KIRPA SCREWING W/ HTML BELOW -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- TailwindCSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <title>Edit Profile</title>
+</head>
+
+<body class="bg-gray-100">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-center mb-8">Edit Profile</h1>
+
+    <h4 class="text-xl font-bold">User Information</h4>
+    <hr class="my-4">
+    <h1>ID: @Model.Id</h1>
+    <h2>First Name: @Model.FirstName</h2>
+
+    <div class="row">
+      <div class="col-md-4 mx-auto">
+        <form asp-action="Edit" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          <input type="hidden" asp-for="Id" />
+
+          <div class="mb-4">
+            <label asp-for="FirstName" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="FirstName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <span asp-validation-for="FirstName" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="mb-4">
+            <label asp-for="LastName" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="LastName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <span asp-validation-for="LastName" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="mb-4">
+            <label asp-for="Phone" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="Phone" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <span asp-validation-for="Phone" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <input type="submit" value="Save" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,17 @@
+@model int
+
+@{
+    ViewData["Title"] = "Choose Business";
+}
+
+<h2>Select Business</h2>
+
+@using (Html.BeginForm("SelectBusiness", "Session", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="businessId">Business:</label>
+        @Html.DropDownList("businessId", ViewBag.Businesses as SelectList, "Select Business", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Next</button>
+}

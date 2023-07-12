@@ -16,5 +16,6 @@ namespace CAPATHON.Data
 
         // tables
         // EX: public virtual DbSet<Book>? Books { get; set; }
+        public virtual DbSet<Client>? Clients { get; set; }
     }
 }

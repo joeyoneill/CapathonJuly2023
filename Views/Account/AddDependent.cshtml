@@ -1,5 +1,67 @@
+@model CAPATHON.Models.Dependent
 @{
     ViewData["Title"] = "Add Dependent";
+    Guid new_dependent_id = new Guid();
 }
 
-<h1>hello</h1>
+<h1 class="text-center">Add Dependent</h1>
+<br>
+<h4 class="text-center">Dependent</h4>
+<p>@ViewBag.userId</p>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="AddDependent" method="POST">
+
+            <input asp-for="Id" type="hidden" value="@new_dependent_id">
+            <input asp-for="ClientId" type="hidden" value="@ViewBag.userId">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <br>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <br>
+            
+            <div class="form-group">
+                <label asp-for="EmergencyContactName" class="control-label"></label>
+                <input asp-for="EmergencyContactName" class="form-control" />
+                <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="EmergencyContactPhone" class="control-label"></label>
+                <input asp-for="EmergencyContactPhone" class="form-control" />
+                <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label asp-for="AdditionalNotes" class="control-label"></label>
+                <input asp-for="AdditionalNotes" class="form-control" />
+                <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
+            </div>
+            <br>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Save Item" class="btn btn-danger" style="font-weight: bold;" />
+            </div>
+            <br>
+        </form>
+    </div>
+</div>

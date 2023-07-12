@@ -36,7 +36,38 @@ namespace CAPATHON.Controllers
         }
 
         ////////////////////////////////////////////////////////////////////////////////
-        // Precluded Sign Up Decision Forms
+        // SelectBusiness Functions
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // GET: /Session/SelectBusiness
+        [Authorize]
+        public IActionResult SelectBusiness() {
+            // table null check
+            if (_context.Businesses == null)
+                return NotFound();
+            
+            // Get Businesses + Add to ViewBag
+            var businesses = _context.Businesses.ToList();
+            if (businesses == null)
+                return NotFound();
+            ViewBag.Businesses = new SelectList(businesses, "Id", "Name");
+
+            return View();
+        }
+
+        // POST: /Session/SelectBusiness
+        [HttpPost]
+        [Authorize]
+        public IActionResult SelectBusiness(int businessId) {
+            if (businessId == 0)
+                return RedirectToAction("SelectBusiness");
+
+            Console.WriteLine("\nbusiness id: " + businessId + "\n");
+            return RedirectToAction("Index");
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // SelectCareType Functions
         ////////////////////////////////////////////////////////////////////////////////
 
         // GET: /Session/SelectCareType

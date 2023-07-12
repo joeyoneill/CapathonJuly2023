@@ -203,6 +203,8 @@ namespace CAPATHON.Controllers
         ////////////////////////////////////////////////////////////////////////////////
 
         // GET: Edit Dependent
+        //[Authorize]
+        //public async Task<IActionResult>
 
         // POST: Edit Dependent
 

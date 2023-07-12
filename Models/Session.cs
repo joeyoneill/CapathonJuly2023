@@ -7,11 +7,11 @@ namespace CAPATHON.Models
 {
     public class Session
     {
-        public guid Id { get; set; }
+        public Guid Id { get; set; }
         public int? CareTypeId { get; set; }
         public int? LocationId { get; set; }
-        public datetime? StartTime { get; set; }
-        public datetime? EndTime { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
         public int? MaxDependents { get; set; }
     }
 }

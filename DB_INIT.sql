@@ -5,26 +5,31 @@
 ----------------------------------------------------
 
 --DELETE FROM Clients;
---DELETE FROM Dependents;
---DELETE FROM CareType;
---DELETE FROM Businesses;
---DELETE FROM Locations;
---DELETE FROM "Sessions";
+
 --DELETE FROM SessionDependents;
+
+--DELETE FROM Dependents;
+
+--DELETE FROM "Sessions";
+--DELETE FROM Locations;
+--DELETE FROM Businesses;
+--DELETE FROM CareType;
+
 
 ----------------------------------------------------
 -- DROP TABLES                                    --
 ----------------------------------------------------
 
 --DROP TABLE Clients;
---DROP TABLE Dependents;
 
 --DROP TABLE SessionDependents;
+
+--DROP TABLE Dependents;
+
 --DROP TABLE "Sessions";
 --DROP TABLE Locations;
 --DROP TABLE Businesses;
---DROP TABLE CareType;
-
+--DROP TABLE CareTypes;
 
 ----------------------------------------------------
 -- INITALIZE TABLES                               --
@@ -37,8 +42,8 @@ CREATE TABLE Clients (
     FirstName NVARCHAR(50),
     LastName NVARCHAR(50),
     Phone NVARCHAR(15)
-);*/
-/*
+);
+
 -- Dependents Table
 CREATE TABLE Dependents (
     Id UNIQUEIDENTIFIER PRIMARY KEY,
@@ -54,19 +59,19 @@ CREATE TABLE Dependents (
 /*
 -- Care Types (Child, Elderly, Pet)
 -- Lookup table
-CREATE TABLE CareType (
+CREATE TABLE CareTypes (
     "Id" INT IDENTITY(1,1) PRIMARY KEY,
     "Name" NVARCHAR(50)
-);*/
+);
 
-/*
+
 -- Businesses Table
 CREATE TABLE Businesses (
     "Id" INT IDENTITY(1,1) PRIMARY KEY,
     "Name" NVARCHAR(100)
-);*/
+);
 
-/*
+
 -- Location
 CREATE TABLE Locations (
     "Id" Int IDENTITY(1,1) PRIMARY KEY,
@@ -78,9 +83,9 @@ CREATE TABLE Locations (
     "ZipCode" NVARCHAR(10),
     "BusinessId" INT,
     FOREIGN KEY (BusinessId) REFERENCES Businesses(Id)
-);*/
+);
 
-/*
+
 -- Sessions
 CREATE TABLE Sessions (
     "Id" UNIQUEIDENTIFIER PRIMARY KEY,
@@ -89,11 +94,11 @@ CREATE TABLE Sessions (
     "MaxDependents" INT,
     "CareTypeId" INT,
     "LocationId" INT,
-    FOREIGN KEY (CareTypeId) REFERENCES CareType(Id),
+    FOREIGN KEY (CareTypeId) REFERENCES CareTypes(Id),
     FOREIGN KEY (LocationId) REFERENCES Locations(Id)
-);*/
+);
 
-/*
+
 -- SessionDependents Table
 -- Connecting Table: Resolves many-to-many relationship
 CREATE TABLE SessionDependents (
@@ -110,54 +115,54 @@ CREATE TABLE SessionDependents (
 
 /*
 -- Care Type Lookup Table Data
-INSERT INTO CareType (Name) VALUES ('CHILD');
-INSERT INTO CareType (Name) VALUES ('PET');
-INSERT INTO CareType (Name) VALUES ('ELDERLY');*/
+INSERT INTO CareTypes (Name) VALUES ('CHILD');
+INSERT INTO CareTypes (Name) VALUES ('PET');
+INSERT INTO CareTypes (Name) VALUES ('ELDERLY');
 
-/*
+
 -- Business Data
 INSERT INTO Businesses (Name) VALUES ('Community');
 INSERT INTO Businesses (Name) VALUES ('Capgemini');
 INSERT INTO Businesses (Name) VALUES ('Microsoft');
-INSERT INTO Businesses (Name) VALUES ('Amazon');*/
+INSERT INTO Businesses (Name) VALUES ('Amazon');
 
-/*
+
 -- Community Location Data
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
 VALUES ('11 Lindsley Ave B', 'Nashville', 'TN', 'USA', '37210', 1);
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
 VALUES ('1811 Osage St', 'Nashville', 'TN', 'USA', '37208', 1);
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
-VALUES ('1234 Schrader Ln', 'Nashville', 'TN', 'USA', '37208', 1);*/
+VALUES ('1234 Schrader Ln', 'Nashville', 'TN', 'USA', '37208', 1);
 
-/*
+
 -- Capgemini Location Data
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
 VALUES ('2142 Boyce St #3901', 'Columbia', 'SC', 'USA', '29201', 2);
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
 VALUES ('1600 West End Ave', 'Nashville', 'TN', 'USA', '37203', 2);
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
-VALUES ('3475 Piedmont Rd NE #1400', 'Atlanta', 'GA', 'USA', '30305', 2);*/
+VALUES ('3475 Piedmont Rd NE #1400', 'Atlanta', 'GA', 'USA', '30305', 2);
 
-/*
+
 -- Microsoft Location Data
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
 VALUES ('1045 La Avenida St', 'Mountain View', 'CA', 'USA', '94043', 3);
 INSERT INTO Locations (Address, Address2, City, State, Country, Zipcode, BusinessId)
 VALUES ('Microsoft ArrowPoint 1', '8055 Microsoft Way', 'Charlotte', 'NC', 'USA', '28273', 3);
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
-VALUES ('1414 NW Northup St #900', 'Portland', 'OR', 'USA', '97209', 3);*/
+VALUES ('1414 NW Northup St #900', 'Portland', 'OR', 'USA', '97209', 3);
 
-/*
+
 -- Amazon Location Data
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
 VALUES ('1800 S Bell St', 'Arlington', 'VA', 'USA', '22202', 4);
 INSERT INTO Locations (Address, City, State, Country, Zipcode, BusinessId)
-VALUES ('1010 Church St', 'Nashville', 'TN', 'USA', '37203', 4);*/
+VALUES ('1010 Church St', 'Nashville', 'TN', 'USA', '37203', 4);
 
 -- Dummy Session Data
 
-/*
+
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 1, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
@@ -241,7 +246,7 @@ VALUES (NEWID(), 2, 11, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);*/
 
 SELECT * FROM Clients;
 SELECT * FROM Dependents;
-SELECT * FROM CareType;
+SELECT * FROM CareTypes;
 SELECT * FROM Businesses;
 SELECT * FROM Locations;
 SELECT * FROM "Sessions";

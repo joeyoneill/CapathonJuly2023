@@ -66,7 +66,7 @@ else {
                         <td>@dependent.FirstName</td>
                         <td>@dependent.LastName</td>
                         <td>
-                            <a href="" class="btn btn-warning">Edit</a>
+                            <a href="@Url.Action("EditDependent", new { id = dependent.Id })" class="btn btn-warning">Edit</a>
                         </td>
                     </tr>
                 }

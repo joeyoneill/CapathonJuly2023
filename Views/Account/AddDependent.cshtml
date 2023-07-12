@@ -3,7 +3,7 @@
     ViewData["Title"] = "Add Dependent";
     Guid new_dependent_id = new Guid();
 }
-
+<!--
 <h1 class="text-center">Add Dependent</h1>
 <br>
 <h4 class="text-center">Dependent</h4>
@@ -65,3 +65,76 @@
         </form>
     </div>
 </div>
+-->
+
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- TailwindCSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <title>Add Dependent</title>
+</head>
+
+<body class="bg-gray-100">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-center mb-8">Add Dependent</h1>
+
+    <h4 class="text-xl font-bold text-center">Dependent</h4>
+    <hr class="my-4">
+
+    <div class="row justify-center">
+      <div class="col-md-4">
+        <form asp-action="AddDependent" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <input asp-for="Id" type="hidden" value="@new_dependent_id">
+          <input asp-for="ClientId" type="hidden" value="@ViewBag.userId">
+
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+          <div class="mb-4">
+            <label asp-for="FirstName" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="FirstName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <span asp-validation-for="FirstName" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="mb-4">
+            <label asp-for="LastName" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="LastName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <span asp-validation-for="LastName" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="mb-4">
+            <label asp-for="EmergencyContactName" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="EmergencyContactName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <span asp-validation-for="EmergencyContactName" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="mb-4">
+            <label asp-for="EmergencyContactPhone" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="EmergencyContactPhone" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <span asp-validation-for="EmergencyContactPhone" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="mb-4">
+            <label asp-for="Birthday" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="Birthday" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="date" />
+            <span asp-validation-for="Birthday" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="mb-4">
+            <label asp-for="AdditionalNotes" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <input asp-for="AdditionalNotes" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <span asp-validation-for="AdditionalNotes" class="text-red-500 text-xs italic"></span>
+          </div>
+
+          <div class="flex items-center justify-center">
+            <input type="submit" value="Save Item" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

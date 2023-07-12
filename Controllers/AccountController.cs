@@ -18,6 +18,8 @@ namespace CAPATHON.Controllers
         }
 
         ////////////////////////////////////////////////////////////////////////////////
+        // Account Action Functions
+        ////////////////////////////////////////////////////////////////////////////////
 
         // ACTION: /Account/Login
         public async Task Login(string returnUrl = "/")
@@ -32,9 +34,28 @@ namespace CAPATHON.Controllers
             await HttpContext.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
         }
 
+        // ACTION: /Account/Logout
+        [Authorize]
+        public async Task Logout()
+        {
+            var authenticationProperties = new LogoutAuthenticationPropertiesBuilder()
+                // Indicate here where Auth0 should redirect the user after a logout.
+                // Note that the resulting absolute Uri must be added to the
+                // **Allowed Logout URLs** settings for the app.
+                .WithRedirectUri(Url.Action("Index", "Home"))
+                .Build();
+
+            await HttpContext.SignOutAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // Account Profile Functions
+        ////////////////////////////////////////////////////////////////////////////////
+
         // GET: /Account/Profile
         [Authorize]
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
             // attr init
             string name = string.Empty;
@@ -69,28 +90,21 @@ namespace CAPATHON.Controllers
                 return NotFound();
             }
 
+            // get client
+            if (_context.Clients == null)
+                return NotFound();
+            var client = await _context.Clients.FindAsync(provider_and_userId);
+            if (client == null)
+                return NotFound();
+
             var ViewModel = new UserProfileViewModel {
                 UserId = userId,
                 Name = nickname,
-                Email = name
+                Email = name,
+                Client_Obj = client
             };
 
             return View(ViewModel);
-        }
-
-        // ACTION: /Account/Logout
-        [Authorize]
-        public async Task Logout()
-        {
-            var authenticationProperties = new LogoutAuthenticationPropertiesBuilder()
-                // Indicate here where Auth0 should redirect the user after a logout.
-                // Note that the resulting absolute Uri must be added to the
-                // **Allowed Logout URLs** settings for the app.
-                .WithRedirectUri(Url.Action("Index", "Home"))
-                .Build();
-
-            await HttpContext.SignOutAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
         ////////////////////////////////////////////////////////////////////////////////
@@ -151,6 +165,25 @@ namespace CAPATHON.Controllers
             }
             return View(client);
         }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // Dependents Functions
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // GET: add dependent
+        [Authorize]
+        public async Task<IActionResult> AddDependent() {
+            return View();
+        }
+
+
+        // POST: create dependent
+
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // GET: Edit Dependent
+
+        // POST: Edit Dependent
 
         ////////////////////////////////////////////////////////////////////////////////
 

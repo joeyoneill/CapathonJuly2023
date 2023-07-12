@@ -91,20 +91,21 @@ namespace CAPATHON.Controllers
             }
 
             // get client
-            if (_context.Clients == null)
+            if (_context.Clients == null || _context.Dependents == null)
                 return NotFound();
             var client = await _context.Clients.FindAsync(provider_and_userId);
             if (client == null)
                 return NotFound();
 
             // get client dependents
-
+            var clientDependents = await _context.Dependents.Where(d => d.ClientId == provider_and_userId).ToListAsync();
 
             var ViewModel = new UserProfileViewModel {
                 UserId = userId,
                 Name = nickname,
                 Email = name,
                 Client_Obj = client,
+                client_dependents = clientDependents
             };
 
             return View(ViewModel);

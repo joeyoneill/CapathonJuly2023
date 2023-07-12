@@ -34,8 +34,6 @@ else {
         <h3>Email: @Model.Email</h3>
         <h3>User ID: @Model.UserId</h3>
         <h3>Add your details to profile below</h3>
-        <a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">Edit User Details</a>
-        <a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">Add Dependent</a>
     </div>
 }
 else {
@@ -45,8 +43,45 @@ else {
         <h3>Email: @Model.Email</h3>
         <h3>User ID: @Model.UserId</h3>
         <h3>Phone Number: @Model.Client_Obj.Phone</h3>
-        <a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">Edit User Details</a>
-        <a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">Add Dependent</a>
     </div>
 }
 
+<!-- Dependents Table -->
+<h3 class="text-center"><strong>Dependents</strong></h3><br>
+@if (Model.client_dependents.Count > 0)
+{
+    <div class="table-responsive text-center">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dependent in Model.client_dependents)
+                {
+                    <tr>
+                        <td>@dependent.FirstName</td>
+                        <td>@dependent.LastName</td>
+                        <td>
+                            <a href="" class="btn btn-warning">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+
+
+<!--Button Links-->
+<a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
+    Edit User Details
+</a>
+
+<a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
+    Add Dependent
+</a>

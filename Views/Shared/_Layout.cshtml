@@ -28,11 +28,16 @@
             <a style="color: #ce3235;" asp-controller="Home" asp-action="Locations" class="mr-10 hover:text-gray-900">Locations</a>
             <a style="color: #ce3235;" asp-controller="Home" asp-action="Calendar" class="mr-10 hover:text-gray-900">Calendar</a>
             @if (User.Identity.IsAuthenticated) {
-            <a style="color: #ce3235;" asp-controller="Account" asp-action="Profile"> @User.Identity.Name </a>         
-            <a style="color: #ce3235;" asp-controller="Account" asp-action="Logout">Logout</a>
-            } else {
-            <a style="color: #ce3235;" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-             }
+            
+            <a style="color: #ce3235;" asp-controller="Account" asp-action="Profile" class="mr-10 hover:text-gray-900"> @User.Identity.Name </a>         
+            <a style="color: #ce3235;" asp-controller="Account" asp-action="Logout" class="mr-10 hover:text-gray-900">Logout</a>
+            
+            }
+            else {
+
+            <a style="color: #ce3235;" asp-area="" asp-controller="Account" asp-action="Login" class="mr-10 hover:text-gray-900">Login</a>
+
+            }
           </nav>
         </div>
       </header>

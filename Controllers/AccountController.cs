@@ -170,14 +170,35 @@ namespace CAPATHON.Controllers
         // Dependents Functions
         ////////////////////////////////////////////////////////////////////////////////
 
-        // GET: add dependent
+        // GET: add dependent /Account/AddDependent
         [Authorize]
-        public async Task<IActionResult> AddDependent() {
+        public IActionResult AddDependent() {
+            if (_context.Clients == null)
+                return NotFound();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+                return NotFound();
+
+            ViewBag.userId = userId;
+
             return View();
         }
 
-
         // POST: create dependent
+        [HttpPost]
+        public async Task<IActionResult> AddDependent([Bind("Id,FirstName,LastName,EmergencyContactName,EmergencyContactPhone,Birthday,AdditionalNotes,ClientId")] Dependent dependent)
+        {
+            Console.WriteLine(ModelState.IsValid);
+            Console.WriteLine(dependent.Id.GetType());
+            Console.WriteLine(dependent.Birthday.GetType());
+            if (ModelState.IsValid)
+            {
+                _context.Add(dependent);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Profile));
+            }
+            return View(dependent);
+        }
 
         ////////////////////////////////////////////////////////////////////////////////
 

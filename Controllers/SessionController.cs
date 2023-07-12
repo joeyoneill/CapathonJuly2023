@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Auth0.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CAPATHON.Controllers
 {
@@ -34,13 +35,40 @@ namespace CAPATHON.Controllers
             return View("Error!");
         }
 
+        ////////////////////////////////////////////////////////////////////////////////
+        // Precluded Sign Up Decision Forms
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // GET: /Session/SelectCareType
+        [Authorize]
+        public IActionResult SelectCareType() {
+            // null check
+            if (_context.CareTypes == null)
+                return NotFound();
+            
+            // Get Care Types + Add to ViewBag
+            var careTypes = _context.CareTypes.ToList();
+            if (careTypes == null)
+                return NotFound();
+            ViewBag.CareTypes = new SelectList(careTypes, "Id", "Name");
+
+            return View();
+        }
+
+        // POST: /Session/SelectCareType
+        [HttpPost]
+        [Authorize]
+        public IActionResult SelectCareType(int careTypeId) {
+            Console.WriteLine("\ncaretype id: " + careTypeId + "\n");
+            return RedirectToAction("Index");
+        }
+
         ////////////////////////////////////////////////////////////////////////////////// Care Sign Up Form
         ////////////////////////////////////////////////////////////////////////////////
 
         // GET: /Session/CareSessionForm
         [Authorize]
-        public async Task<IActionResult> CareSessionForm() {
-
+        public IActionResult CareSessionForm() {
             return View();
         }
     }

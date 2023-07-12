@@ -15,8 +15,18 @@ namespace CAPATHON.Data
         }
 
         // tables
-        // EX: public virtual DbSet<Book>? Books { get; set; }
+
+        // Front Facing Tables
         public virtual DbSet<Client>? Clients { get; set; }
         public virtual DbSet<Dependent>? Dependents { get; set; }
+
+        // Back-end Facing Tables
+        public virtual DbSet<CareType>? CareTypes { get; set; }
+        public virtual DbSet<Business>? Businesses { get; set; }
+        public virtual DbSet<Location>? Locations { get; set; }
+        public virtual DbSet<Session>? Sessions { get; set; }
+
+        // Connector Tables
+        public virtual DbSet<SessionDependent>? SessionDependents { get; set; }
     }
 }

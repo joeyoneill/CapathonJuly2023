@@ -9,29 +9,7 @@
     <link rel="stylesheet" href="~/CAPATHON.styles.css" asp-append-version="true" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CAPATHON</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name = "_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-    </header>
+<body> 
     
     <!-- Navigation Bar -->
     <header class="text-gray-600 body-font">
@@ -49,6 +27,12 @@
             <a style="color: #ce3235;" asp-controller="Home" asp-action="Contact"   class="mr-10 hover:text-gray-900">Contact Us</a>
             <a style="color: #ce3235;" asp-controller="Home" asp-action="Locations" class="mr-10 hover:text-gray-900">Locations</a>
             <a style="color: #ce3235;" asp-controller="Home" asp-action="Calendar" class="mr-10 hover:text-gray-900">Calendar</a>
+            @if (User.Identity.IsAuthenticated) {
+            <a style="color: #ce3235;" asp-controller="Account" asp-action="Profile"> @User.Identity.Name </a>         
+            <a style="color: #ce3235;" asp-controller="Account" asp-action="Logout">Logout</a>
+            } else {
+            <a style="color: #ce3235;" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+             }
           </nav>
         </div>
       </header>

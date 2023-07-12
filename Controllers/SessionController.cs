@@ -33,5 +33,15 @@ namespace CAPATHON.Controllers
         {
             return View("Error!");
         }
+
+        ////////////////////////////////////////////////////////////////////////////////// Care Sign Up Form
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // GET: /Session/CareSessionForm
+        [Authorize]
+        public async Task<IActionResult> CareSessionForm() {
+
+            return View();
+        }
     }
 }

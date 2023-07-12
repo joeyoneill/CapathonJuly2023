@@ -4,29 +4,6 @@
     ViewData["Title"] = Model.Email;
 }
 
-<!--
-@if (@Model.Client_Obj.FirstName == null || @Model.Client_Obj.LastName == null) {
-
-<h1>Hello, @Model.Name</h1>
-<hr>
-<h3>Email: @Model.Email</h3>
-<h3>User Id: @Model.UserId</h3>
-<h3>Add your details to profile below</h3>
-
-}
-else {
-
-<h1>Hello, @Model.Client_Obj.FirstName @Model.Client_Obj.LastName</h1>
-<hr>
-<h3>Email: @Model.Email</h3>
-<h3>User Id: @Model.UserId</h3>
-<h3>Phone Number: @Model.Client_Obj.Phone</h3>
-
-}
-
-<a href="/Account/Edit" class="btn btn-warning" style="font-weight: bold;">Edit User Details</a>
--->
-
 @if (string.IsNullOrEmpty(Model.Client_Obj.FirstName) || string.IsNullOrEmpty(Model.Client_Obj.LastName)) {
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold text-center mb-8">Hello, @Model.Name</h1>

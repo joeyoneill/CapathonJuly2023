@@ -178,5 +178,61 @@ namespace CAPATHON.Controllers
 
             return RedirectToAction("Profile", "Account");
         }
+
+        ////////////////////////////////////////////////////////////////////////////////// View Sessions Functions
+        ////////////////////////////////////////////////////////////////////////////////
+
+        [Authorize]
+        public IActionResult ViewSessions() {
+            // tables null check
+            if (_context.SessionDependents == null || _context.Dependents == null || _context.Sessions == null || _context.Locations == null)
+                return NotFound();
+
+            // get client id
+            var clientId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (clientId == null)
+                return NotFound();
+
+            // Get DependentIds
+            var sessionDependentIds = _context.SessionDependents
+                .Where(sd => sd.dependent.ClientId == clientId).ToList();
+            
+            // Get JOINed table information:
+            // SessionDependents.Id
+            // Dependents.FullName
+            // Session.SessionTimeString
+            // Session.LocationId
+            // Location.FullAddress
+            var sessionsInformation = _context.SessionDependents
+                .Join(_context.Dependents,
+                    sessionDependent => sessionDependent.DependentId,
+                    dependent => dependent.Id,
+                    (sessionDependent, dependent) => new { sessionDependent, dependent })
+                .Join(_context.Sessions,
+                    sdDependent => sdDependent.sessionDependent.SessionId,
+                    session => session.Id,
+                    (sdDependent, session) => new { sdDependent.sessionDependent, sdDependent.dependent, session })
+                .Join(_context.Locations,
+                    sdDependentSession => sdDependentSession.session.LocationId,
+                    location => location.Id,
+                    (sdDependentSession, location) => new
+                    {
+                        sdDependentSession.sessionDependent.Id,
+                        sdDependentSession.dependent.FullName,
+                        sdDependentSession.session.SessionTimeString,
+                        LocationId = sdDependentSession.session.LocationId,
+                        LocationFullAddress = location.FullAddress
+                    })
+                .ToList();
+            
+            ViewBag.SessionsInformation = sessionsInformation;
+
+            foreach (var s in sessionsInformation)
+                Console.WriteLine(s);
+
+            return View();
+        }
+
+        // DELETE SessionDependent
     }
 }

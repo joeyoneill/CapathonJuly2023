@@ -243,9 +243,9 @@ VALUES (NEWID(), 2, 11, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 ----------------------------------------------------
 
 --SELECT * FROM Clients;
---SELECT * FROM Dependents;
-SELECT * FROM CareTypes;
-SELECT * FROM Businesses;
-SELECT * FROM Locations;
+SELECT * FROM Dependents;
+--SELECT * FROM CareTypes;
+--SELECT * FROM Businesses;
+--SELECT * FROM Locations;
 SELECT * FROM "Sessions";
 SELECT * FROM SessionDependents;

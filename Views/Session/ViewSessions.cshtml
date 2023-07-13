@@ -1,0 +1,49 @@
+<!-- Page That displays Sessions -->
+
+
+@{
+    ViewData["Title"] = "View Sessions";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Dependent Name</th>
+                        <th class="text-center">Session Location</th>
+                        <th class="text-center">Session Time</th>
+                        <th class="text-center">Cancel Session</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.SessionsInformation != null && ViewBag.SessionsInformation.Count != 0)
+                    {
+                        @foreach (var s in ViewBag.SessionsInformation)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    @s.FullName
+                                </td>
+                                <td class="text-center">
+                                    @s.LocationFullAddress
+                                </td>
+                                <td class="text-center">
+                                    @s.SessionTimeString
+                                </td>
+                                <td class="text-center">
+                                    <a href="" class="btn btn-danger">Cancel</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <td class="text-center" colspan="4">You are not currently registed for any sessions.</td>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

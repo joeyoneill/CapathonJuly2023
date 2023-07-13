@@ -56,11 +56,12 @@
 <body class="bg-gray-100">
   <div class="container mx-auto px-4 py-8">
     <h1 class="text-4xl font-bold text-center mb-8">Edit Profile</h1>
-
+<!--
     <h4 class="text-xl font-bold">User Information</h4>
     <hr class="my-4">
     <h1>ID: @Model.Id</h1>
     <h2>First Name: @Model.FirstName</h2>
+    -->
 
     <div class="row">
       <div class="col-md-4 mx-auto">
@@ -69,13 +70,13 @@
           <input type="hidden" asp-for="Id" />
 
           <div class="mb-4">
-            <label asp-for="FirstName" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <label asp-for="FirstName" class="block text-gray-700 text-sm font-bold mb-2">First Name</label>
             <input asp-for="FirstName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
             <span asp-validation-for="FirstName" class="text-red-500 text-xs italic"></span>
           </div>
 
           <div class="mb-4">
-            <label asp-for="LastName" class="block text-gray-700 text-sm font-bold mb-2"></label>
+            <label asp-for="LastName" class="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
             <input asp-for="LastName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
             <span asp-validation-for="LastName" class="text-red-500 text-xs italic"></span>
           </div>

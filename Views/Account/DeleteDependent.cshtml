@@ -1,0 +1,51 @@
+@model CAPATHON.Models.Dependent
+@{
+    ViewData["Title"] = "Delete Dependent";
+}
+
+<h1>Are you sure you would like to delete this dependent?</h1>
+
+<h4>Dependent Information</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeleteDependent" method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ClientId" value="@ViewBag.userId">
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"> First Name</label>
+                <input asp-for="FirstName" class="form-control" readonly />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" readonly />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmergencyContactName" class="control-label">Emergency Contact Name</label>
+                <input asp-for="EmergencyContactName" class="form-control" readonly />
+                <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmergencyContactPhone" class="control-label">Emergency Contact Phone</label>
+                <input asp-for="EmergencyContactPhone" class="form-control"readonly />
+                <span asp-validation-for="EmergencyContactPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label">Birthday</label>
+                <input asp-for="Birthday" class="form-control" type="date" readonly/>
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalNotes" class="control-label">Additional Notes</label>
+                <input asp-for="AdditionalNotes" class="form-control" readonly/>
+                <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete Dependent" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>

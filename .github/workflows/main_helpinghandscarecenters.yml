@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'HelpingHandsCareCenters'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C00CC952836A4FB78AB0EC65A12D46C8 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BC297DBCAC6646B5A12C1B8038BA1795 }}
           package: .

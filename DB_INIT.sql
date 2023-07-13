@@ -13,7 +13,7 @@
 --DELETE FROM "Sessions";
 --DELETE FROM Locations;
 --DELETE FROM Businesses;
---DELETE FROM CareType;
+--DELETE FROM CareTypes;
 
 
 ----------------------------------------------------
@@ -107,17 +107,15 @@ CREATE TABLE SessionDependents (
     "DependentId" UNIQUEIDENTIFIER,
     FOREIGN KEY (SessionId) REFERENCES Sessions(Id),
     FOREIGN KEY (DependentId) REFERENCES Dependents(Id)
-);*/
-
+);
 ----------------------------------------------------
 -- ADD DATA INTO TABLES                           --
 ----------------------------------------------------
 
-/*
+
 -- Care Type Lookup Table Data
 INSERT INTO CareTypes (Name) VALUES ('CHILD');
 INSERT INTO CareTypes (Name) VALUES ('PET');
-INSERT INTO CareTypes (Name) VALUES ('ELDERLY');
 
 
 -- Business Data
@@ -166,88 +164,88 @@ VALUES ('1010 Church St', 'Nashville', 'TN', 'USA', '37203', 4);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 1, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 1, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 1, 1, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 1, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 2, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 2, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 2, 2, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 2, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 3, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 3, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 1, 3, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 3, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 4, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 4, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 2, 4, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 4, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 5, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 5, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 1, 5, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 5, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 6, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 6, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 2, 6, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 6, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 7, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 7, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 1, 7, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 7, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 8, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 8, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 2, 8, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 8, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 9, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 9, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 1, 9, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 9, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 10, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 10, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 2, 10, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 2, 10, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
 
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
 VALUES (NEWID(), 1, 11, '2023-07-12 10:00:00', '2023-07-12 12:00:00', 15);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 3, 11, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
+VALUES (NEWID(), 1, 11, '2023-07-15 9:00:00', '2023-07-12 12:00:00', 20);
 INSERT INTO Sessions (Id, CareTypeId, LocationId, StartTime, EndTime, MaxDependents)
-VALUES (NEWID(), 2, 11, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);*/
-
+VALUES (NEWID(), 2, 11, '2023-07-16 7:30:00', '2023-07-12 17:00:00', 10);
+*/
 ----------------------------------------------------
 -- DISPLAY TABLES                                 --
 ----------------------------------------------------
 
 --SELECT * FROM Clients;
 --SELECT * FROM Dependents;
---SELECT * FROM CareTypes;
---SELECT * FROM Businesses;
---SELECT * FROM Locations;
---SELECT * FROM "Sessions";
+SELECT * FROM CareTypes;
+SELECT * FROM Businesses;
+SELECT * FROM Locations;
+SELECT * FROM "Sessions";
 SELECT * FROM SessionDependents;

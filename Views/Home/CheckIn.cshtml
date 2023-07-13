@@ -1,0 +1,183 @@
+@{
+    ViewData["Title"] = "CheckIn";
+}
+
+<html>
+  <!--
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doggy Daycare Live Stream</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      margin-bottom: 20px;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Doggy Daycare Live Stream</h1>
+    <div class="video-wrapper">
+      
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/YbGyswW6gQE" title="Integrating a New Dog Into Doggy Day Care" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+-->
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daycare and Doggy Day Camp</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+
+
+    .video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  margin-bottom: 20px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.toggle-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.toggle-btn button {
+  margin-right: 10px;
+}
+
+.navbar {
+  background-color: #f8f9fa;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+ </style>
+</head>
+<body>
+  
+  </nav>
+  <div class="container">
+    <div class="toggle-btn">
+      <button class="btn btn-danger toggle-daycare">Daycare Photo Gallery</button>
+      <button class="btn btn-danger toggle-doggydaycamp">Doggy Daycare Live Stream</button>
+    </div>
+    <div class="daycare-content">
+      <h1 class="text-center">Daycare Photo Gallery</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="~/care1.jpg" class="card-img-top" alt="Daycare Photo 1">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="~/care2.jpg" class="card-img-top" alt="Daycare Photo 2">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="~/care3.jpeg" class="card-img-top" alt="Daycare Photo 3">
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="~/care3.jpeg" class="card-img-top" alt="Daycare Photo 4">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="~/care1.jpg" class="card-img-top" alt="Daycare Photo 5">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="~/care2.jpg" class="card-img-top" alt="Daycare Photo 6">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doggydaycamp-content" style="display: none;">
+      <h1 class="text-center mb-4">Doggy Daycare Live Stream</h1>
+      <div class="video-wrapper">
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/YbGyswW6gQE" title="Integrating a New Dog Into Doggy Day Care" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleDaycareBtn = document.querySelector('.toggle-daycare');
+      const toggleDoggyDaycampBtn = document.querySelector('.toggle-doggydaycamp');
+      const daycareContent = document.querySelector('.daycare-content');
+      const doggydaycampContent = document.querySelector('.doggydaycamp-content');
+
+      toggleDaycareBtn.addEventListener('click', function() {
+    toggleDaycareBtn.classList.add('active');
+    toggleDoggyDaycampBtn.classList.remove('active');
+    daycareContent.style.display = 'block';
+    doggydaycampContent.style.display = 'none';
+  });
+
+  toggleDoggyDaycampBtn.addEventListener('click', function() {
+    toggleDaycareBtn.classList.remove('active');
+    toggleDoggyDaycampBtn.classList.add('active');
+    daycareContent.style.display = 'none';
+    doggydaycampContent.style.display = 'block';
+  });
+});
+
+  </script>
+</body>
+</html>

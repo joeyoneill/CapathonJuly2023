@@ -63,8 +63,14 @@
                                         <h5 class="card-title"><strong>Emergency Contact Name:</strong> @dependent.EmergencyContactName</h5>
                                         <h5 class="card-title"><strong>Emergency Contact Phone:</strong> @dependent.EmergencyContactPhone</h5>
                                         <h5 class="card-title"><strong>Additional Notes:</strong> @dependent.EmergencyContactPhone</h5>
-                                        <a href="@Url.Action("EditDependent", new { id = dependent.Id })" class="btn btn-warning">Edit</a>
-                                        <a href="@Url.Action("DeleteDependent", new { id = dependent.Id })" class="btn btn-danger">Delete</a>
+                                        
+                                        <br>
+                                        <div class="text-center">
+                                            <a href="@Url.Action("EditDependent", new { id = dependent.Id })" class="btn btn-warning">Edit</a> | 
+                                            <a href="@Url.Action("DeleteDependent", new { id = dependent.Id })" class="btn btn-danger">Delete</a>
+                                        </div>
+                                        <br>
+
                                     </div>
 
                                 </div>

@@ -249,5 +249,60 @@ namespace CAPATHON.Controllers
         {
           return (_context.Clients?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+    
+
+
+  // GET: Delete Dependent
+        [Authorize]
+        public IActionResult DeleteDependent(Guid id) {
+            // get dependent
+            if (_context.Dependents == null)
+                return NotFound();
+
+            var dependent = _context.Dependents.FirstOrDefault(d => d.Id == id);
+
+            if (dependent == null)
+            {
+                return NotFound();
+            }
+            
+            // get user id
+            if (_context.Clients == null)
+                return NotFound();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+                return NotFound();
+            ViewBag.userId = userId;
+
+            return View(dependent);
+        }
+
+        // POST: Delete Dependent
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteDependent([Bind("Id,FirstName,LastName,EmergencyContactName,EmergencyContactPhone,Birthday,AdditionalNotes,ClientId")] Dependent dependent)
+        {
+            if (ModelState.IsValid)
+            {
+                if(_context.SessionDependents == null || _context.Dependents == null)
+                {
+                    return NotFound();
+                }
+                var sessions = _context.SessionDependents.Where(sd => sd.DependentId == dependent.Id).ToList();
+                if (sessions == null) {
+                    return NotFound();
+                }
+                foreach(var session in sessions) {
+                    _context.SessionDependents.Remove(session);
+                }
+                await _context.SaveChangesAsync();
+                _context.Dependents.Remove(dependent);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Profile));
+            }
+            return View(dependent);
+        }
+
     }
+
 }

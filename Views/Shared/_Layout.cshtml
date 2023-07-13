@@ -1,71 +1,74 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CAPATHON</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/CAPATHON.styles.css" asp-append-version="true" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - CAPATHON</title>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/CAPATHON.styles.css" asp-append-version="true" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body> 
-    
-    <!-- Navigation Bar -->
-    <header class="text-gray-600 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-             <img src="~/HandsLogo.png" alt="HandsLogo" class="img-fluid" style="width: 50px; height: 50px;"> </img>
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"> </path>
-            
-            <span class="ml-3 text-xl">Helping Hands Care Center</span>
-          </a>
-          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a style="color: #ce3235;" asp-controller="Home" asp-action="Index"     class="mr-10 hover:text-gray-900">Home</a>
-            <a style="color: #ce3235;" asp-controller="Home" asp-action="Pricing"   class="mr-10 hover:text-gray-900">Pricing</a>
-            <a style="color: #ce3235;" asp-controller="Home" asp-action="AboutUs"   class="mr-10 hover:text-gray-900">About Us</a>
-            <a style="color: #ce3235;" asp-controller="Home" asp-action="Contact"   class="mr-10 hover:text-gray-900">Contact Us</a>
-            <a style="color: #ce3235;" asp-controller="Home" asp-action="Locations" class="mr-10 hover:text-gray-900">Locations</a>
-            <a style="color: #ce3235;" asp-controller="Home" asp-action="Calendar" class="mr-10 hover:text-gray-900">Calendar</a>
-            @if (User.Identity.IsAuthenticated) {
-            
-            <a style="color: #ce3235;" asp-controller="Account" asp-action="Profile" class="mr-10 hover:text-gray-900"> @User.Identity.Name </a>         
-            <a style="color: #ce3235;" asp-controller="Account" asp-action="Logout" class="mr-10 hover:text-gray-900">Logout</a>
-            
-            }
-            else {
 
-            <a style="color: #ce3235;" asp-area="" asp-controller="Account" asp-action="Login" class="mr-10 hover:text-gray-900">Login</a>
+<body>
 
-            }
-          </nav>
-        </div>
-      </header>
+  <!-- Navigation Bar -->
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <img src="~/HandsLogo.png" alt="HandsLogo" class="img-fluid" style="width: 50px; height: 50px;"> </img>
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"> </path>
 
+        <span class="ml-3 text-xl">Helping Hands Care Center</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a style="color: #ce3235;" asp-controller="Home" asp-action="Index" class="mr-10 hover:text-gray-900">Home</a>
+        <a style="color: #ce3235;" asp-controller="Home" asp-action="Pricing"
+          class="mr-10 hover:text-gray-900">Pricing</a>
+        <a style="color: #ce3235;" asp-controller="Home" asp-action="AboutUs" class="mr-10 hover:text-gray-900">About
+          Us</a>
+        <a style="color: #ce3235;" asp-controller="Home" asp-action="Contact" class="mr-10 hover:text-gray-900">Contact
+          Us</a>
+        <a style="color: #ce3235;" asp-controller="Home" asp-action="Locations"
+          class="mr-10 hover:text-gray-900">Locations</a>
+        <a style="color: #ce3235;" asp-controller="Home" asp-action="Calendar"
+          class="mr-10 hover:text-gray-900">Calendar</a>
+        @if (User.Identity.IsAuthenticated)
+        {
 
+          <a style="color: #ce3235;" asp-controller="Account" asp-action="Profile" class="mr-10 hover:text-gray-900">
+            @User.Identity.Name </a>
+          <a style="color: #ce3235;" asp-controller="Account" asp-action="Logout"
+            class="mr-10 hover:text-gray-900">Logout</a>
 
+        }
+        else
+        {
 
+          <a style="color: #ce3235;" asp-area="" asp-controller="Account" asp-action="Login"
+            class="mr-10 hover:text-gray-900">Login</a>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        }
+      </nav>
     </div>
+  </header>
 
-    <footer>
-      <div class="bg-gray-100">
+
+
+
+
+  <div class="container">
+    <main role="main" class="pb-3">
+      @RenderBody()
+    </main>
+  </div>
+
+  <footer>
+    <div class="bg-gray-100">
       <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
         <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-         <!--
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-            stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-red-500 rounded-full"
-            viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          -->
-
           <img src="~/HandsLogo.png" alt="HandsLogo" class="img-fluid" style="width: 50px; height: 50px;"> </img>
-
           <span class="ml-3 text-xl">Helping Hands Care Centers</span>
         </a>
         <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">(Powered by Capathon Team Nations)
@@ -79,7 +82,7 @@
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
             </svg>
           </a>
-          
+
           <a class="ml-3 text-gray-500">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
               viewBox="0 0 24 24">
@@ -88,7 +91,7 @@
               </path>
             </svg>
           </a>
-          
+
           <a class="ml-3 text-gray-500">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               class="w-5 h-5" viewBox="0 0 24 24">
@@ -107,13 +110,14 @@
         </span>
       </div>
     </div>
-        <div class="container">
-            &copy; 2023 - CAPATHON - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer> 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <div class="container">
+      &copy; 2023 - CAPATHON - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+  </footer>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

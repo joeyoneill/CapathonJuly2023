@@ -1,60 +1,57 @@
 @model CAPATHON.Models.Dependent
 @{
-    ViewData["Title"] = "Edit Dependent";
+    ViewData["Title"] = "Delete Dependent";
 }
 <!--
-<h1>Edit</h1>
+<h1>Are you sure you would like to delete this dependent?</h1>
 
 <h4>Dependent Information</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="EditDependent" method="POST">
+        <form asp-action="DeleteDependent" method="POST">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="ClientId" value="@ViewBag.userId">
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <label asp-for="FirstName" class="control-label"> First Name</label>
+                <input asp-for="FirstName" class="form-control" readonly />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" readonly />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EmergencyContactName" class="control-label"></label>
-                <input asp-for="EmergencyContactName" class="form-control" />
+                <label asp-for="EmergencyContactName" class="control-label">Emergency Contact Name</label>
+                <input asp-for="EmergencyContactName" class="form-control" readonly />
                 <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EmergencyContactPhone" class="control-label"></label>
-                <input asp-for="EmergencyContactPhone" class="form-control" />
+                <label asp-for="EmergencyContactPhone" class="control-label">Emergency Contact Phone</label>
+                <input asp-for="EmergencyContactPhone" class="form-control"readonly />
                 <span asp-validation-for="EmergencyContactPhone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Birthday" class="control-label"></label>
-                <input asp-for="Birthday" class="form-control" type="date" />
+                <label asp-for="Birthday" class="control-label">Birthday</label>
+                <input asp-for="Birthday" class="form-control" type="date" readonly/>
                 <span asp-validation-for="Birthday" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AdditionalNotes" class="control-label"></label>
-                <input asp-for="AdditionalNotes" class="form-control" />
+                <label asp-for="AdditionalNotes" class="control-label">Additional Notes</label>
+                <input asp-for="AdditionalNotes" class="form-control" readonly/>
                 <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Delete Dependent" class="btn btn-danger" />
             </div>
         </form>
     </div>
 </div>
 -->
 
-
-
-
-<h1 class="text-4xl font-bold text-center mb-8">Edit Dependent</h1>
+<h1 class="text-4xl font-bold text-center mb-8">Delete Dependent</h1>
 <div class="flex justify-center mb-8">
   <div class="w-1/2">
     <h4 class="text-xl font-bold">Dependent Information</h4>
@@ -63,50 +60,52 @@
 </div>
 <div class="flex justify-center">
   <div class="w-1/2">
-    <form asp-action="EditDependent" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form asp-action="DeleteDependent" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <div asp-validation-summary="ModelOnly" class="text-red-500 text-center mb-4"></div>
       <input type="hidden" asp-for="Id" />
       <input type="hidden" asp-for="ClientId" value="@ViewBag.userId">
 
+
         <div class="mb-4">
     <label asp-for="FirstName" class="block text-gray-700 text-sm font-bold mb-2">First Name</label>
-    <input asp-for="FirstName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <input asp-for="FirstName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" readonly />
     <span asp-validation-for="FirstName" class="text-red-500 text-xs italic"></span>
   </div>
 
   <div class="mb-4">
     <label asp-for="LastName" class="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
-    <input asp-for="LastName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <input asp-for="LastName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" readonly />
     <span asp-validation-for="LastName" class="text-red-500 text-xs italic"></span>
   </div>
 
   <div class="mb-4">
-    <label asp-for="EmergencyContactName" class="block text-gray-700 text-sm font-bold mb-2">Emergecny Contact Name</label>
-    <input asp-for="EmergencyContactName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <label asp-for="EmergencyContactName" class="block text-gray-700 text-sm font-bold mb-2">Emergency Contact Name</label>
+    <input asp-for="EmergencyContactName" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" readonly />
     <span asp-validation-for="EmergencyContactName" class="text-red-500 text-xs italic"></span>
   </div>
 
   <div class="mb-4">
     <label asp-for="EmergencyContactPhone" class="block text-gray-700 text-sm font-bold mb-2">Emergency Contact Phone</label>
-    <input asp-for="EmergencyContactPhone" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <input asp-for="EmergencyContactPhone" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" readonly />
     <span asp-validation-for="EmergencyContactPhone" class="text-red-500 text-xs italic"></span>
   </div>
 
   <div class="mb-4">
-    <label asp-for="Birthday" class="block text-gray-700 text-sm font-bold mb-2"></label>
-    <input asp-for="Birthday" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="date" />
+    <label asp-for="Birthday" class="block text-gray-700 text-sm font-bold mb-2">Birthday</label>
+    <input asp-for="Birthday" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="date" readonly />
     <span asp-validation-for="Birthday" class="text-red-500 text-xs italic"></span>
   </div>
 
   <div class="mb-4">
     <label asp-for="AdditionalNotes" class="block text-gray-700 text-sm font-bold mb-2">Additional Notes</label>
-    <input asp-for="AdditionalNotes" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <input asp-for="AdditionalNotes" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" readonly />
     <span asp-validation-for="AdditionalNotes" class="text-red-500 text-xs italic"></span>
   </div>
 
   <div class="flex items-center justify-center">
-    <input type="submit" value="Save" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
+    <input type="submit" value="Delete Dependent" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
   </div>
 </form>
+
   </div>
 </div>

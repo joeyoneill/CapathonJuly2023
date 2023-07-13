@@ -33,6 +33,11 @@ public class HomeController : Controller
         return View();
     }
 
+        public IActionResult CheckIn()
+    {
+        return View();
+    }
+
     public IActionResult Contact()
     {
         return View();

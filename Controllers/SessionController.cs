@@ -62,8 +62,45 @@ namespace CAPATHON.Controllers
             if (businessId == 0)
                 return RedirectToAction("SelectBusiness");
 
-            Console.WriteLine("\nbusiness id: " + businessId + "\n");
-            return RedirectToAction("Index");
+            return RedirectToAction("SelectLocation", new { businessId = businessId });
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // SelectLocation Functions
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // GET: /Session/SelectLocation
+        [Authorize]
+        public async Task<IActionResult> SelectLocation(int? businessId) {
+            if (_context.Locations == null || _context.Businesses == null)
+                return NotFound();
+            if (businessId == null)
+                return RedirectToAction("SelectBusiness");
+
+            // Get Business
+            var business = await _context.Businesses.FindAsync(businessId);
+            if (business == null)
+                return NotFound();
+            ViewBag.Business = business;
+            
+            // Get All Locations Where BusinessId == businessId
+            var locations = _context.Locations.Where(l => l.BusinessId == businessId).ToList();
+            if (locations == null)
+                return NotFound();
+            
+            ViewBag.Locations = new SelectList(locations, "Id", "FullAddress");
+
+            //
+            return View();
+        }
+
+        // POST: /Session/SelectCareType
+        [HttpPost]
+        [Authorize]
+        public IActionResult SelectLocationPost(int? locationId) {
+            if (locationId == 0)
+                return RedirectToAction("SelectBusiness");
+            return RedirectToAction("SelectCareType", new { locationId = locationId });
         }
 
         ////////////////////////////////////////////////////////////////////////////////
@@ -72,9 +109,10 @@ namespace CAPATHON.Controllers
 
         // GET: /Session/SelectCareType
         [Authorize]
-        public IActionResult SelectCareType() {
+        public IActionResult SelectCareType(int? locationId) {
+
             // null check
-            if (_context.CareTypes == null)
+            if (_context.CareTypes == null || locationId == null)
                 return NotFound();
             
             // Get Care Types + Add to ViewBag
@@ -82,16 +120,16 @@ namespace CAPATHON.Controllers
             if (careTypes == null)
                 return NotFound();
             ViewBag.CareTypes = new SelectList(careTypes, "Id", "Name");
+            ViewBag.locationId = locationId;
 
             return View();
         }
 
-        // POST: /Session/SelectCareType
+        // POST: /Session/SelectCareTypePost
         [HttpPost]
         [Authorize]
-        public IActionResult SelectCareType(int careTypeId) {
-            Console.WriteLine("\ncaretype id: " + careTypeId + "\n");
-            return RedirectToAction("Index");
+        public IActionResult SelectCareTypePost(int careTypeId, int locationId) {
+            return RedirectToAction("CareSessionForm", new { locationId, careTypeId });
         }
 
         ////////////////////////////////////////////////////////////////////////////////// Care Sign Up Form
@@ -99,8 +137,46 @@ namespace CAPATHON.Controllers
 
         // GET: /Session/CareSessionForm
         [Authorize]
-        public IActionResult CareSessionForm() {
+        public IActionResult CareSessionForm(int locationId, int careTypeId) {
+            if (_context.Sessions == null || _context.Dependents == null)
+                return NotFound();
+            
+            // get sessions
+            var sessions = _context.Sessions.Where(s => s.CareTypeId == careTypeId && s.LocationId == locationId).ToList();
+            if (sessions == null)
+                return NotFound();
+            ViewBag.Sessions = new SelectList(sessions, "Id", "SessionTimeString");
+
+            // Get user ID
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+                return NotFound();
+
+            // Get user's dependents
+            var dependents = _context.Dependents.Where(d => d.ClientId == userId);
+            if (dependents == null)
+                return NotFound();
+            ViewBag.Dependents = new SelectList(dependents, "Id", "FullName");
+
             return View();
+        }
+
+        // POST: /Session/CareSessionFormPost
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> CareSessionFormPost(Guid sessionId, Guid dependentId) {
+            if (_context.Sessions == null || _context.Dependents == null || _context.SessionDependents == null)
+                return NotFound();
+            
+            var sessionDependent = new SessionDependent {
+                SessionId = sessionId,
+                DependentId = dependentId
+            };
+
+            _context.SessionDependents.Add(sessionDependent);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Profile", "Account");
         }
     }
 }

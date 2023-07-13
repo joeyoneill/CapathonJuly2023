@@ -4,22 +4,11 @@
     ViewData["Title"] = "Care Type";
 }
 
+<h1>Location ID @ViewBag.locationId</h1>
+
 <h1 class="text-center display-4 font-weight-bold">Select Care Type</h1>
-<!--
-@using (Html.BeginForm("SelectCareType", "Session", FormMethod.Post))
-{
-     <div class="container mx-auto px-4 py-8">
-    <div class="form-group" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <label for="careTypeId">Care Type:</label>
-        @Html.DropDownList("careTypeId", ViewBag.CareTypes as SelectList, "Select Care Type", new { @class = "form-control" })
-    </div>
 
-    <button type="submit" class="btn btn-danger  fancy-button">Next</button>
-    </div>
-}
--->
-
-@using (Html.BeginForm("SelectCareType", "Session", FormMethod.Post))
+@using (Html.BeginForm("SelectCareTypePost", "Session", FormMethod.Post))
 {
 <div class="container mx-auto px-4 py-8">
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -31,6 +20,9 @@
         <option value="@careType.Value">@careType.Text</option>
       }
     </select>
+
+    <input type="hidden" name="locationId" value="@ViewBag.locationId">
+
   </div>
 <div class="flex justify-center">
   <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline fancy-button">Next</button>

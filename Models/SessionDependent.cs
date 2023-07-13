@@ -10,5 +10,8 @@ namespace CAPATHON.Models
         public int Id { get; set; }
         public Guid DependentId { get; set; }
         public Guid SessionId { get; set; }
+
+        public Session? session { get; set; }
+        public Dependent? dependent { get; set; }
     }
 }

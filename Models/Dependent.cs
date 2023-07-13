@@ -16,5 +16,8 @@ namespace CAPATHON.Models
         public string? AdditionalNotes { get; set; }
         public string ClientId { get; set; }
         public string FullName => $"{FirstName} {LastName}";
+
+         // Navigation property to represent the session dependents associated with a dependent
+        public ICollection<SessionDependent>? SessionDependents { get; set; }
     }
 }

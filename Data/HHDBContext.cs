@@ -28,5 +28,21 @@ namespace CAPATHON.Data
 
         // Connector Tables
         public virtual DbSet<SessionDependent>? SessionDependents { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SessionDependent>()
+                .HasKey(sd => new { sd.DependentId, sd.SessionId });
+
+            modelBuilder.Entity<SessionDependent>()
+                .HasOne(sd => sd.session)
+                .WithMany(s => s.SessionDependents)
+                .HasForeignKey(sd => sd.SessionId);
+
+            modelBuilder.Entity<SessionDependent>()
+                .HasOne(sd => sd.dependent)
+                .WithMany(d => d.SessionDependents)
+                .HasForeignKey(sd => sd.DependentId);
+        }
     }
 }

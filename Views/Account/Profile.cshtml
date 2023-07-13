@@ -6,81 +6,73 @@
 
 <h1 class="text-4xl font-bold text-center mb-8">Hello, @Model.Client_Obj.FirstName @Model.Client_Obj.LastName!</h1>
 <hr class="my-5">
-<div class="container d-flex justify-content-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h3 class="text-center"><strong>Personal Information</strong></h3><br>
-                @if (string.IsNullOrEmpty(Model.Client_Obj.FirstName) ||
-                string.IsNullOrEmpty(Model.Client_Obj.LastName))
-                {
-                    <div class="container mx-auto px-4 py-8 bg-gray-100 rounded-lg">
-                        <h1 class="text-4xl font-bold text-center mb-8">Hello, @Model.Name</h1>
-                        <hr>
-                        <h3>Email: @Model.Email</h3>
-                        <h3>User ID: @Model.UserId</h3>
-                        <h3>Add your details to profile below</h3>
+<div class="container">
+    <div class="row justify-content-center">
+        <!-- Left side -->
+        <div class="col-md-6">
+            <h3><strong>Personal Information</strong></h3><br>
+            @if (string.IsNullOrEmpty(Model.Client_Obj.FirstName) || string.IsNullOrEmpty(Model.Client_Obj.LastName))
+            {
+                <div class="col-8 px-4 py-8 bg-gray-100 rounded-lg">
+                    <h1 class="text-4xl font-bold text-center mb-8">Hello, @Model.Name</h1>
+                    <hr>
+                    <h3>Email: @Model.Email</h3>
+                    <h3>User ID: @Model.UserId</h3>
+                    <h3>Add your details to profile below</h3>
+                </div>
+            }
+            else
+            {
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <h5 class="card-title h3">Email</h5>
+                        <p class="card-text h4">@Model.Email</p>
+                        <h5 class="card-title h3">Phone Number</h5>
+                        <p class="card-text h4">@Model.Client_Obj.Phone</p>
+                        <a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
+                            Edit User Details
+                        </a>
                     </div>
-                }
-                else
-                {
-                    <div>
-                        <div class="container d-flex justify-content-center ">
-                            <div class="row">
-                                <div class="col-md-auto">
-                                    <div class="card  bg-gray-100 rounded-lg">
-                                        <div class="card-body"> 
-                                            <h5 class="card-title h3">Email</h5>
-                                            <p class="card-text h4">@Model.Email</p>
-                                            <h5 class="card-title h3">Phone Number</h5>
-                                            <p class="card-text h4">@Model.Client_Obj.Phone</p>
-                                            <a href="/Account/Edit"
-                                                class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
-                                                Edit User Details
-                                            </a>
-                                        </div>
-                                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Right side -->
+        <div class="col-md-6">
+            <h3 class="text-center"><strong>Dependents</strong></h3><br>
+            @if (Model.client_dependents.Count > 0)
+            {
+                <div class="row justify-content-center">
+                    @foreach (var dependent in Model.client_dependents)
+                    {
+                        <div class="col-md-6 col-lg-8">
+                            <div class="card mb-4">
+                                <div class="card-body bg-gray-100 rounded-lg">
+                                    <h5 class="card-title">Name: @dependent.FirstName @dependent.LastName</h5>
+                                    <h5 class="card-title">Date of Birth: @dependent.Birthday</h5>
+                                    <h5 class="card-title">Emergency Contact Name: @dependent.EmergencyContactName</h5>
+                                    <h5 class="card-title">Emergency Contact Phone: @dependent.EmergencyContactPhone</h5>
+                                    <h5 class="card-title">Additional Notes: @dependent.EmergencyContactPhone</h5>
+                                    <a href="@Url.Action("EditDependent", new { id = dependent.Id })"
+                                        class="btn btn-warning">Edit</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
-
-            <!-- Dependents Table -->
-            <div class="col-md-6">
-                <h3 class="text-center"><strong>Dependents</strong></h3><br>
-                @if (Model.client_dependents.Count > 0)
-                {
-                    <div class="row justify-content-center">
-                        @foreach (var dependent in Model.client_dependents)
-                        {
-                            <div class="col-md-6 col-lg-8"> <!-- Adjust the column classes -->
-                                <div class="card mb-4">
-                                    <div class="card-body  bg-gray-100 rounded-lg">
-                                        <h5 class="card-title">Name: @dependent.FirstName @dependent.LastName</h5>
-                                        <h5 class="card-title">Date of Birth: @dependent.Birthday</h5>
-                                        <h5 class="card-title">Emergency Contact Name: @dependent.EmergencyContactName</h5>
-                                        <h5 class="card-title">Emergency Contact Phone: @dependent.EmergencyContactPhone</h5>
-                                         <h5 class="card-title">Additional Notes: @dependent.EmergencyContactPhone</h5>
-                                        <a href="@Url.Action("EditDependent", new { id = dependent.Id })"
-                                            class="btn btn-warning">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    <div class="text-center mt-4">
-                        <a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4">
-                            Add Dependent
-                        </a>
-                    </div>
-
-                }
-            </div>
+                    }
+                </div>
+                <div class="text-center mt-4">
+                    <a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4">
+                        Add Dependent
+                    </a>
+                </div>
+            }
         </div>
     </div>
 </div>
+
+
+
+
 
 
 <a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">

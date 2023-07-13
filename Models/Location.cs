@@ -15,5 +15,6 @@ namespace CAPATHON.Models
         public string? Country { get; set; }
         public string? Zipcode { get; set; }
         public int? BusinessId { get; set; }
+        public string FullAddress => $"{Address}, {City}, {State}, {Country}, {Zipcode}";
     }
 }

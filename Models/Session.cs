@@ -13,5 +13,6 @@ namespace CAPATHON.Models
         public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public int? MaxDependents { get; set; }
+        public string SessionTimeString => $"{StartTime} - {EndTime}";
     }
 }

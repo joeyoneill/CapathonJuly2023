@@ -15,5 +15,6 @@ namespace CAPATHON.Models
         public DateTime? Birthday { get; set; }
         public string? AdditionalNotes { get; set; }
         public string ClientId { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
     }
 }

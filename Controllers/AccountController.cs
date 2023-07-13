@@ -100,24 +100,6 @@ namespace CAPATHON.Controllers
             // get client dependents
             var clientDependents = await _context.Dependents.Where(d => d.ClientId == provider_and_userId).ToListAsync();
 
-            // Step 1: Retrieve the user's dependents' IDs
-            var dependentIds = _context.Dependents
-                .Where(d => d.ClientId == provider_and_userId)
-                .Select(d => d.Id)
-                .ToList();
-
-            // Step 2: Query the SessionDependents table to fetch session IDs
-            var sessionIds = _context.SessionDependents
-                .Where(sd => dependentIds.Contains(sd.DependentId))
-                .Select(sd => sd.SessionId)
-                .ToList();
-
-            // Step 3: Retrieve the sessions based on the session IDs
-            var sessions = _context.Sessions
-                .Where(s => sessionIds.Contains(s.Id))
-                .ToList();
-            ViewBag.Sessions = sessions;
-
             var ViewModel = new UserProfileViewModel {
                 UserId = userId,
                 Name = nickname,

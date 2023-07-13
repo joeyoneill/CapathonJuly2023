@@ -57,15 +57,16 @@
                         {
                             <div class="col-md-6 col-lg-8"> <!-- Adjust the column classes -->
                                 <div class="card mb-4">
-                                    <div class="card-body  bg-gray-100 rounded-lg">
-                                        <h5 class="card-title">Name: @dependent.FirstName @dependent.LastName</h5>
-                                        <h5 class="card-title">Date of Birth: @dependent.Birthday</h5>
-                                        <h5 class="card-title">Emergency Contact Name: @dependent.EmergencyContactName</h5>
-                                        <h5 class="card-title">Emergency Contact Phone: @dependent.EmergencyContactPhone</h5>
-                                         <h5 class="card-title">Additional Notes: @dependent.EmergencyContactPhone</h5>
-                                        <a href="@Url.Action("EditDependent", new { id = dependent.Id })"
-                                            class="btn btn-warning">Edit</a>
+                                    <div class="card-body bg-gray-100 rounded-lg">
+                                        <h5 class="card-title"><strong>Name:</strong> @dependent.FirstName @dependent.LastName</h5>
+                                        <h5 class="card-title"><strong>Date of Birth:</strong> @dependent.Birthday</h5>
+                                        <h5 class="card-title"><strong>Emergency Contact Name:</strong> @dependent.EmergencyContactName</h5>
+                                        <h5 class="card-title"><strong>Emergency Contact Phone:</strong> @dependent.EmergencyContactPhone</h5>
+                                        <h5 class="card-title"><strong>Additional Notes:</strong> @dependent.EmergencyContactPhone</h5>
+                                        <a href="@Url.Action("EditDependent", new { id = dependent.Id })" class="btn btn-warning">Edit</a>
+                                        <a href="@Url.Action("DeleteDependent", new { id = dependent.Id })" class="btn btn-danger">Delete</a>
                                     </div>
+
                                 </div>
                             </div>
                         }

@@ -252,7 +252,7 @@ namespace CAPATHON.Controllers
     
 
 
-  // GET: Delete Dependent
+        // GET: Delete Dependent
         [Authorize]
         public IActionResult DeleteDependent(Guid id) {
             // get dependent

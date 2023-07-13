@@ -192,10 +192,6 @@ namespace CAPATHON.Controllers
             var clientId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (clientId == null)
                 return NotFound();
-
-            // Get DependentIds
-            var sessionDependentIds = _context.SessionDependents
-                .Where(sd => sd.dependent.ClientId == clientId).ToList();
             
             // Get JOINed table information:
             // SessionDependents.Id
@@ -226,9 +222,6 @@ namespace CAPATHON.Controllers
                 .ToList();
             
             ViewBag.SessionsInformation = sessionsInformation;
-
-            foreach (var s in sessionsInformation)
-                Console.WriteLine(s);
 
             return View();
         }

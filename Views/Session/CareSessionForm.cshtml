@@ -1,0 +1,44 @@
+<!--Posting to the SessionDependent Table-->
+<!--ViewBag For other things-->
+@model CAPATHON.Models.SessionDependent
+
+@{
+    ViewData["Title"] = "Session Sign Up";
+}
+
+<br>
+
+<h1 class="text-center"><strong>Session sign up</strong></h1>
+
+<br>
+
+@using (Html.BeginForm("CareSessionFormPost", "Session", FormMethod.Post))
+{
+    <!--Session Id-->
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <label for="sessionId" class="block text-gray-700 text-sm font-bold mb-2">Session:</label>
+        <select id="sessionId" name="sessionId" class="form-select w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="">Select Session</option>
+            @foreach (var session in ViewBag.Sessions as SelectList)
+            {
+            <option value="@session.Value">@session.Text</option>
+            }
+        </select>
+    </div>
+
+    <!--Dependent Id-->
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <label for="dependentId" class="block text-gray-700 text-sm font-bold mb-2">Dependent:</label>
+        <select id="dependentId" name="dependentId" class="form-select w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="">Select Dependent</option>
+            @foreach (var dependent in ViewBag.Dependents as SelectList)
+            {
+            <option value="@dependent.Value">@dependent.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="flex justify-center">
+        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline fancy-button">Next</button>
+    </div>
+}

@@ -4,29 +4,6 @@
     ViewData["Title"] = Model.Email;
 }
 
-<!--
-@if (@Model.Client_Obj.FirstName == null || @Model.Client_Obj.LastName == null) {
-
-<h1>Hello, @Model.Name</h1>
-<hr>
-<h3>Email: @Model.Email</h3>
-<h3>User Id: @Model.UserId</h3>
-<h3>Add your details to profile below</h3>
-
-}
-else {
-
-<h1>Hello, @Model.Client_Obj.FirstName @Model.Client_Obj.LastName</h1>
-<hr>
-<h3>Email: @Model.Email</h3>
-<h3>User Id: @Model.UserId</h3>
-<h3>Phone Number: @Model.Client_Obj.Phone</h3>
-
-}
-
-<a href="/Account/Edit" class="btn btn-warning" style="font-weight: bold;">Edit User Details</a>
--->
-
 @if (string.IsNullOrEmpty(Model.Client_Obj.FirstName) || string.IsNullOrEmpty(Model.Client_Obj.LastName)) {
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold text-center mb-8">Hello, @Model.Name</h1>
@@ -34,7 +11,6 @@ else {
         <h3>Email: @Model.Email</h3>
         <h3>User ID: @Model.UserId</h3>
         <h3>Add your details to profile below</h3>
-        <a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">Edit User Details</a>
     </div>
 }
 else {
@@ -44,7 +20,53 @@ else {
         <h3>Email: @Model.Email</h3>
         <h3>User ID: @Model.UserId</h3>
         <h3>Phone Number: @Model.Client_Obj.Phone</h3>
-        <a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">Edit User Details</a>
     </div>
 }
 
+<!-- Dependents Table -->
+<h3><strong>Dependents</strong></h3><br>
+@if (Model.client_dependents.Count > 0)
+{
+    <div class="table-responsive text-center">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dependent in Model.client_dependents)
+                {
+                    <tr>
+                        <td>@dependent.FirstName</td>
+                        <td>@dependent.LastName</td>
+                        <td>
+                            <a href="@Url.Action("EditDependent", new { id = dependent.Id })" class="btn btn-warning">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+
+
+<!--Button Links-->
+<a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
+    Edit User Details
+</a>
+
+<a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
+    Add Dependent
+</a>
+
+<a href="/Session/SelectBusiness" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
+    Session Sign Up
+</a>
+
+<a href="" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
+    View Sessions
+</a>

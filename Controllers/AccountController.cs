@@ -50,7 +50,7 @@ namespace CAPATHON.Controllers
         }
 
         ////////////////////////////////////////////////////////////////////////////////
-        // Account Profile Functions
+        // Account Profile Function
         ////////////////////////////////////////////////////////////////////////////////
 
         // GET: /Account/Profile
@@ -91,20 +91,21 @@ namespace CAPATHON.Controllers
             }
 
             // get client
-            if (_context.Clients == null)
+            if (_context.Clients == null || _context.Dependents == null || _context.SessionDependents == null || _context.Sessions == null)
                 return NotFound();
             var client = await _context.Clients.FindAsync(provider_and_userId);
             if (client == null)
                 return NotFound();
 
             // get client dependents
-
+            var clientDependents = await _context.Dependents.Where(d => d.ClientId == provider_and_userId).ToListAsync();
 
             var ViewModel = new UserProfileViewModel {
                 UserId = userId,
                 Name = nickname,
                 Email = name,
                 Client_Obj = client,
+                client_dependents = clientDependents
             };
 
             return View(ViewModel);
@@ -188,6 +189,7 @@ namespace CAPATHON.Controllers
         }
 
         // POST: create dependent
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddDependent([Bind("Id,FirstName,LastName,EmergencyContactName,EmergencyContactPhone,Birthday,AdditionalNotes,ClientId")] Dependent dependent)
         {
@@ -203,8 +205,43 @@ namespace CAPATHON.Controllers
         ////////////////////////////////////////////////////////////////////////////////
 
         // GET: Edit Dependent
+        [Authorize]
+        public IActionResult EditDependent(Guid id) {
+            // get dependent
+            if (_context.Dependents == null)
+                return NotFound();
+
+            var dependent = _context.Dependents.FirstOrDefault(d => d.Id == id);
+
+            if (dependent == null)
+            {
+                return NotFound();
+            }
+            
+            // get user id
+            if (_context.Clients == null)
+                return NotFound();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+                return NotFound();
+            ViewBag.userId = userId;
+
+            return View(dependent);
+        }
 
         // POST: Edit Dependent
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditDependent([Bind("Id,FirstName,LastName,EmergencyContactName,EmergencyContactPhone,Birthday,AdditionalNotes,ClientId")] Dependent dependent)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(dependent);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Profile));
+            }
+            return View(dependent);
+        }
 
         ////////////////////////////////////////////////////////////////////////////////
 

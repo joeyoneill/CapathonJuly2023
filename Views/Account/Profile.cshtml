@@ -24,7 +24,7 @@ else {
 }
 
 <!-- Dependents Table -->
-<h3 class="text-center"><strong>Dependents</strong></h3><br>
+<h3><strong>Dependents</strong></h3><br>
 @if (Model.client_dependents.Count > 0)
 {
     <div class="table-responsive text-center">
@@ -54,6 +54,39 @@ else {
 }
 
 
+<!-- Sessions Table
+<h3><strong>Care Sessions</strong></h3><br>
+@if (Model.client_dependents.Count > 0)
+{
+    <div class="table-responsive text-center">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Session Location</th>
+                    <th>Session Time</th>
+                    <th>Dependent</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var session in ViewBag.Sessions)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@session.SessionTimeString</td>
+                        <td></td>
+                        <td>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}-->
+
+
 <!--Button Links-->
 <a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
     Edit User Details
@@ -61,4 +94,8 @@ else {
 
 <a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
     Add Dependent
+</a>
+
+<a href="/Session/SelectBusiness" class="btn btn-danger text-white font-bold py-2 px-4 mt-4">
+    Session Sign Up
 </a>

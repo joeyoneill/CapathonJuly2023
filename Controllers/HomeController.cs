@@ -33,12 +33,7 @@ public class HomeController : Controller
         return View();
     }
 
-      public IActionResult DaycareUpdates()
-    {
-        return View();
-    }
-
-        public IActionResult DoggyDayCamp()
+        public IActionResult CheckIn()
     {
         return View();
     }

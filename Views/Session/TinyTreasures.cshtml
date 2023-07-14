@@ -1,0 +1,118 @@
+@{
+    ViewData["Title"] = "TinyTreasures";
+}
+
+
+
+<html>
+<head>
+  <title>Vertical Stacked Cards</title>
+  <style>
+    body {
+      padding: 20px;
+      margin: 0;
+    }
+    
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .card {
+      width: 400px;
+      height: auto;
+      margin-bottom: 20px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: lightcoral;
+      color: white;
+    }
+    
+    .card img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .card h3::before {
+      content: "\2605";
+      margin-right: 5px;
+    }
+    
+    .card p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    
+    .card span {
+      font-size: 12px;
+      color: white;
+    }
+    
+    .audio-player {
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="text-center display-4 font-weight-bold">Tiny Treasures</h1>
+  <br><hr><br>
+  <h1 class="text-center display-6 font-weight-bold">Trevor Simon</h1>
+
+  <div class="card-wrapper">
+    <div class="card">
+      <img src="~/syd.jpg" alt="Image 1">
+      <h3>Daycare Class Doodle</h3>
+      <p>Nashvillians Kids.</p>
+      <span>Date: January 1, 2023</span>
+    </div>
+
+    <div class="card">
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/DO_weGVy-dU"  frameborder="0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <h3>Classroom fun</h3>
+      <p>play time.</p>
+      <span>Date: February 15, 2023</span>
+    </div>
+
+    <div class="card">
+      <div class="audio-player">
+        <audio controls>
+          <source src="~/audio.mp3" type="audio/mp3">
+          Your browser does not support the audio tag.
+        </audio>
+      </div>
+      <h3>Love mom</h3>
+      <p>cute recording.</p>
+      <span>Date: March 30, 2023</span>
+    </div>
+
+    <div class="card">
+      <img src="~/katie.png" alt="Image 3">
+      <h3>Mommy Katie</h3>
+      <p>fam.</p>
+      <span>Date: September 30, 2022</span>
+    </div>
+
+    <div class="card">
+      <img src="~/lin.jpg" alt="Image 3">
+      <h3>left hand doodle</h3>
+      <p>lol.</p>
+      <span>Date: March 30, 2022</span>
+    </div>
+
+  
+  <!-- Add more cards as needed -->
+</body>
+</html>

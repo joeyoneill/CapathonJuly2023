@@ -11,48 +11,43 @@
         <!-- Left side -->
     <div class="col-md-6 centercard-body bg-gray-100 rounded-lg pt-5">
             <h3 class="h2 text-center"><strong>Personal Information</strong></h3><br>
-            @if (string.IsNullOrEmpty(Model.Client_Obj.FirstName) || string.IsNullOrEmpty(Model.Client_Obj.LastName))
-            {
-                <div class="col-8 px-4 py-8 bg-gray-100 rounded-lg">
-                    <h1 class="text-4xl font-bold text-center mb-8">Hello, @Model.Name</h1>
-                    <hr>
-                    <h3>Email: @Model.Email</h3>
-                    <h3>User ID: @Model.UserId</h3>
-                    <h3>Add your details to profile below</h3>
-                </div>
-            }
-            else
-            {
-                <div class="row justify-content-center">
-                    <div class="col-5">
-                        <h5 class="card-title h3 text-center">Email: @Model.Email</h5>
-                        <h5 class="card-title h3 text-center">Phone Number: @Model.Client_Obj.Phone</h5>
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-6">
-                                    <h5 class="card-title h3 justify-content-center mb-6 mt-4">Settings</h5>
-                                </div>
+            
+            <div class="col-8 px-4 py-8 bg-gray-100 rounded-lg">
+                <h1 class="text-4xl font-bold text-center mb-8">Hello, @Model.Name</h1>
+                <hr>
+                <h3>Email: @Model.Email</h3>
+                <h3>User ID: @Model.UserId</h3>
+                <h3>Add your details to profile below</h3>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-5">
+                    <h5 class="card-title h3 text-center">Email: @Model.Email</h5>
+                    <h5 class="card-title h3 text-center">Phone Number: @Model.Client_Obj.Phone</h5>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <h5 class="card-title h3 justify-content-center mb-6 mt-4">Settings</h5>
                             </div>
-                            <div class="row mb-4">
-                                <a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-2 mb-4 ">
-                                    Edit User Details
-                                </a>
-                                <a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4 ">
-                                    Add Dependent
-                                </a>
-                            </div>
-                            <div class="row">
-                                <a href="/Session/SelectBusiness" class="btn btn-danger text-white font-bold py-2 px-4  mb-4"">
-                                    Session Sign Up
-                                </a>
-                                <a href="/Session/ViewSessions" class="btn btn-danger text-white font-bold py-2 px-4">
-                                    View Sessions
-                                </a>
-                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <a href="/Account/Edit" class="btn btn-danger text-white font-bold py-2 px-2 mb-4 ">
+                                Edit User Details
+                            </a>
+                            <a href="/Account/AddDependent" class="btn btn-danger text-white font-bold py-2 px-4 ">
+                                Add Dependent
+                            </a>
+                        </div>
+                        <div class="row">
+                            <a href="/Session/SelectBusiness" class="btn btn-danger text-white font-bold py-2 px-4  mb-4"">
+                                Session Sign Up
+                            </a>
+                            <a href="/Session/ViewSessions" class="btn btn-danger text-white font-bold py-2 px-4">
+                                View Sessions
+                            </a>
                         </div>
                     </div>
                 </div>
-            }
+            </div>
         </div>
 
         <!-- Dependents Table -->

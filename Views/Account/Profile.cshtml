@@ -76,10 +76,15 @@
                                     </h5>
                                     <br>
                                     <div class="text-center">
-                                        <a href="@Url.Action("EditDependent", new { id = dependent.Id })"
-                                            class="btn btn-warning">Edit</a> |
-                                        <a href="@Url.Action("DeleteDependent", new { id = dependent.Id })"
-                                            class="btn btn-danger">Delete</a>
+                                        <a href="@Url.Action("EditDependent", new { id = dependent.Id })" class="btn btn-warning">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a> |
+                                        <a href="@Url.Action("DeleteDependent", new { id = dependent.Id })" class="btn btn-danger">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a> |
+                                        <a href="/Session/TinyTreasures" class="btn btn-primary">
+                                            <i class="fas fa-gem"></i>
+                                        </a>
                                     </div>
                                     <br>
                                 </div>
@@ -90,4 +95,5 @@
             }
         </div>
     </div>
+    <br>
 </div>

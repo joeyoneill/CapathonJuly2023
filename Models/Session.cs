@@ -14,5 +14,8 @@ namespace CAPATHON.Models
         public DateTime? EndTime { get; set; }
         public int? MaxDependents { get; set; }
         public string SessionTimeString => $"{StartTime} - {EndTime}";
+
+        // Navigation property to represent the session dependents associated with a session
+        public ICollection<SessionDependent>? SessionDependents { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿# Helping Hand Care Centers MVP
 
-ASP.NET MVC Web application.
+ASP.NET MVC Web application - "Cap-a-thon" (Hack-a-thon) project in which we had to create a MVP for an imaginary Child and Pet care comapany called "Helping Hands Care Centers."
 
 ---
 
